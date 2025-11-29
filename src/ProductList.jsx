@@ -6,6 +6,7 @@ import { addItem } from './CartSlice';
 
 function ProductList({ onHomeClick }) {
   const [showCart, setShowCart] = useState(false);
+  const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
   const [addedToCart, setAddedToCart] = useState({});
   const dispatch = useDispatch();
   const totalQuantity = useSelector(state => state.cart.totalQuantity);
@@ -248,6 +249,12 @@ function ProductList({ onHomeClick }) {
         setShowCart(true);
       };
     
+      const handlePlantsClick = (e) => {
+        e.preventDefault();
+        setShowPlants(true); // Set showAboutUs to true when "About Us" link is clicked
+        setShowCart(false); // Hide the cart when navigating to About Us
+      };
+
       const handleContinueShopping = (e) => {
         e.preventDefault();
         setShowCart(false);
